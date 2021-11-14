@@ -768,7 +768,7 @@ export default function Patient_payment(props) {
               </div>
             </div>
             <div className='card-footer'>
-              
+
               <button className="btn btn-danger float-right" type="reset" onClick={(e) => {
                 e.preventDefault()
                 doCancelPayment()
@@ -1030,7 +1030,7 @@ class ComponentToPrint extends Component {
   renderPaymentList = () => {
     return this.props.listPantientHistory.map((item, index) => (
       <tr>
-        <td>{index + 1}</td>
+        {/* <td>{index + 1}</td> */}
         <td>{item.promotionMaster.promotion_name + ' ' + item.promotionMaster.unit_quantity + ' ' + item.promotionMaster.unit_suffix}</td>
         <td><CurrencyFormat value={item.promotion_price} displayType={'text'} thousandSeparator={true} suffix={' บาท'} renderText={value => <b>{value}</b>} /></td>
       </tr>
@@ -1064,34 +1064,33 @@ class ComponentToPrint extends Component {
   }
   render() {
     return (
-      <div className="page">
+      <div className="page" style={{ width: '80mm' }}>
         <div className="subpage">
-          <div style={{ float: 'left', width: '5.5cm', height: '6cm', marginTop: '1cm', marginLeft: '0.5cm' }}>
-            <img style={{ height: '5cm' }} src='/img/logo.png' />
+          <div style={{ textAlign: 'center', marginTop: '1mm', marginBottom: '1mm' }}>
+            <img style={{ height: '20mm' }} src='/img/logo.png' />
           </div>
-          <div style={{ float: 'left', width: '14.5cm', height: '6cm', marginTop: '1cm', marginLeft: '0.5cm' }}>
-            <h3 style={{ fontSize: '1cm' }}><b>
-              เคทีเฮลท์ สหคลินิกกายภาพบำบัด </b></h3>
-            <p style={{ fontSize: '6mm' }}>โบท๊อกซ์ ร้อยไหม สปาและความงาม</p>
-            <p style={{ fontSize: '6mm' }}>ลพบุรี เทศบาลเมืองลพบุรี 15000</p>
+          <div style={{ textAlign: 'center' }}>
+            <h3 style={{ fontSize: '6mm' }}><b>เคทีเฮลท์ สหคลินิก </b></h3>
+            <p style={{ fontSize: '4mm' }}>ศูนย์ฟื้นฟูสุขภาพแและชะลอวัย</p>
+            <p style={{ fontSize: '4mm' }}>{'กายภาพบำบัด & ความงาม'}</p>
+            <p style={{ fontSize: '3mm' }}>147 หมู่ 1 พัฒนานิคม พัฒนานิคม ลพบุรี 15140</p>
+            <p style={{ fontSize: '3mm' }}>โทร. 0930981583</p>
+            <p style={{ fontSize: '3mm' }}>TAX#0165559000883</p>
           </div>
-          <div style={{ float: 'left', width: '21cm', fontSize: '1cm', textAlign: 'center' }}>
-            <h2 >ใบเสร็จรับเงิน</h2>
-          </div>
-          <div style={{ float: 'left', width: '20.5cm', fontSize: '0.5cm', textAlign: 'right' }}>
-            <p><b>เลขที่ใบเสร็จ</b> : {this.props.listPantientHistory[0].payment_id}</p>
-          </div>
-          <div style={{ float: 'left', width: '20.5cm', fontSize: '0.5cm', textAlign: 'right' }}>
+          <hr />
+          <h3 style={{ textAlign: 'center', fontSize: '4mm' }}><b>ใบเสร็จรับเงิน/ใบกำกับภาษีอย่างย่อ</b></h3>
+          <hr />
+          <div style={{ textAlign: 'left', marginLeft: '5mm', fontSize: '4mm' }}>
+            <p ><b>ใบเสร็จรับเงิน</b> : {this.props.listPantientHistory[0].payment_id}</p>
             <p><b>วันที่</b> : {moment(this.props.listPantientHistory[0].operate_date).format('DD-MM-YYYY')}</p>
-          </div>
-          <div style={{ float: 'left', width: '20cm', fontSize: '0.5cm', textAlign: 'left', marginLeft: '0.5cm' }}>
             <p><b>ชื่อ - นามสกุล</b> : {this.props.patientData.first_name + ' ' + this.props.patientData.last_name}</p>
           </div>
-          <table className="table table-bordered" style={{ float: 'left', width: '20cm', fontSize: '0.5cm', textAlign: 'left', marginLeft: '0.5cm' }}>
+          <hr />
+          <table className="table table-bordered" style={{ fontSize: '3.5mm', textAlign: 'left', marginLeft: '0.5mm' }}>
             <thead>
               <tr>
-                <th style={{ width: '2.5cm' }}>ลำดับที่</th>
-                <th style={{ width: '13.0cm' }}>รายการ</th>
+                {/* <th style={{}}>ลำดับที่</th> */}
+                <th style={{}}>รายการ</th>
                 <th>จำนวนเงิน</th>
               </tr>
             </thead>
@@ -1099,11 +1098,10 @@ class ComponentToPrint extends Component {
               {this.renderPaymentList()}
               {this.renderCreditAddPrice()}
               <tr>
+                {/* <th >
+                </th> */}
                 <th >
-
-                </th>
-                <th >
-                  จำนวนเงินรวม
+                  <label className='doubleUnderline'>จำนวนเงินรวม</label>
                 </th>
                 <th >
                   <CurrencyFormat value={this.getTotalPayment()} displayType={'text'} thousandSeparator={true} suffix={' บาท'} renderText={value => <b className='doubleUnderline'>{value}</b>} />
@@ -1111,21 +1109,24 @@ class ComponentToPrint extends Component {
               </tr>
             </tbody>
           </table>
-          <div style={{ float: 'left', width: '20cm', fontSize: '0.6cm', textAlign: 'left', marginLeft: '0.5cm' }}>
-            <input style={{ width: '0.6cm', height: '0.6cm' }} checked={this.props.paymentData.payment_type === 'cash' ? true : false} type="checkbox" />
-            <label style={{ marginLeft: '0.5cm' }}>{"เงินสด"}</label>
+          <hr />
+          <div style={{ fontSize: '4mm', textAlign: 'left', marginLeft: '5mm' }}>
+            <input style={{ width: '5mm', height: '5mm' }} checked={this.props.paymentData.payment_type === 'cash' ? true : false} type="checkbox" />
+            <label style={{ marginLeft: '5mm' }}>{"เงินสด"}</label>
           </div>
-          <div style={{ float: 'left', width: '20cm', fontSize: '0.6cm', textAlign: 'left', marginLeft: '0.5cm' }}>
-            <input style={{ width: '0.6cm', height: '0.6cm' }} checked={this.props.paymentData.payment_type === 'transfer' ? true : false} type="checkbox" />
-            <label style={{ marginLeft: '0.5cm' }}>{"โอน"}</label>
+          <div style={{ fontSize: '4mm', textAlign: 'left', marginLeft: '5mm' }}>
+            <input style={{ width: '5mm', height: '5mm' }} checked={this.props.paymentData.payment_type === 'transfer' ? true : false} type="checkbox" />
+            <label style={{ marginLeft: '5mm' }}>{"โอน"}</label>
           </div>
-          <div style={{ float: 'left', width: '20cm', fontSize: '0.6cm', textAlign: 'left', marginLeft: '0.5cm' }}>
-            <input style={{ width: '0.6cm', height: '0.6cm' }} checked={this.props.paymentData.payment_type === 'credit' ? true : false} type="checkbox" />
-            <label style={{ marginLeft: '0.5cm' }}>{"บัตรเครดิต"}</label>
+          <div style={{ fontSize: '4mm', textAlign: 'left', marginLeft: '5mm' }}>
+            <input style={{ width: '5mm', height: '5mm' }} checked={this.props.paymentData.payment_type === 'credit' ? true : false} type="checkbox" />
+            <label style={{ marginLeft: '5mm' }}>{"บัตรเครดิต"}</label>
           </div>
-          <div style={{ float: 'left', width: '20cm', fontSize: '0.5cm', textAlign: 'right', marginLeft: '0.5cm' }}>
+          <hr />
+          <div style={{ textAlign: 'center', fontSize: '0.5cm' }}>
             <p>ขอบคุณที่มาอุดหนุนค่ะ</p>
           </div>
+          <hr />
         </div>
       </div>
     );

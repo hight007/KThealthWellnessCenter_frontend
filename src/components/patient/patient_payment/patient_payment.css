@@ -34,7 +34,7 @@ body {
 }
 
 @page {
-  size: A4;
+  /* size: '80mm'; */
   margin: 0;
 }
 
