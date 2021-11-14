@@ -7,6 +7,7 @@ import { httpClient } from '../../../utils/HttpClient';
 import { OK, server } from '../../../constants';
 import Swal from 'sweetalert2';
 import CurrencyFormat from 'react-currency-format';
+import { Link } from 'react-router-dom';
 
 export default function DailySalesReport() {
   //date
@@ -133,9 +134,9 @@ export default function DailySalesReport() {
       return tableData.map((item, index) => (
         <tr>
           <td>{item.operate_date}</td>
-          <td>{item.patient_id}</td>
+          <td><Link to={'/patient/patient_history/' + item.patient_id}>{item.patient_id}</Link></td>
           <td>
-            {item.first_name + ' ' + item.last_name}
+            <Link to={'/patient/payment/' + item.patient_id}>{item.first_name + ' ' + item.last_name}</Link>
           </td>
           <td>
             {(moment().format('YYYY') - item.year_of_birth) + ' ปี'}
@@ -159,7 +160,7 @@ export default function DailySalesReport() {
       </div>
     )
   }
-  
+
   return (
     <div className="content-wrapper">
       <section className="content-header">

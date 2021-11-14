@@ -1070,9 +1070,10 @@ class ComponentToPrint extends Component {
             <img style={{ height: '5cm' }} src='/img/logo.png' />
           </div>
           <div style={{ float: 'left', width: '14.5cm', height: '6cm', marginTop: '1cm', marginLeft: '0.5cm' }}>
-            <h3 style={{ fontSize: '1cm' }}><b>อัลลาคลินิคเวชกรรม</b></h3>
-            <p style={{ fontSize: '6mm' }}>184/3 หมู่ที่ 2 ต.สุรศักด์ อ.ศรีราชา จ.ชลบุรี 20110</p>
-            <p style={{ fontSize: '6mm' }}>โทรศัพท์ 096-4595396</p>
+            <h3 style={{ fontSize: '1cm' }}><b>
+              เคทีเฮลท์ สหคลินิกกายภาพบำบัด </b></h3>
+            <p style={{ fontSize: '6mm' }}>โบท๊อกซ์ ร้อยไหม สปาและความงาม</p>
+            <p style={{ fontSize: '6mm' }}>ลพบุรี เทศบาลเมืองลพบุรี 15000</p>
           </div>
           <div style={{ float: 'left', width: '21cm', fontSize: '1cm', textAlign: 'center' }}>
             <h2 >ใบเสร็จรับเงิน</h2>
