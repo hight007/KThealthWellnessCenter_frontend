@@ -637,6 +637,11 @@ export default function Patient_data(props) {
                     setTelephone_number(item.telephone_number)
                     setYear_of_birth(moment('01/01/' + item.year_of_birth).toDate())
                     setAddress(item.address)
+
+                    doGetprovinces()
+                    doGetDistrict(item.provinces)
+                    doGetSubDistrict(item.district)
+
                     setprovinces(item.provinces)
                     setDistrict(item.district)
                     setSubDistrict(item.subDistrict)
